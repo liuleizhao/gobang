@@ -1,0 +1,238 @@
+<html>
+<style>
+
+
+table,table tr th,table tr td{
+     border: 1px solid #ccc;
+  }
+table{
+	margin-top:10px;
+     border-collapse: collapse;
+  }
+  
+  td {
+	width: 30px;
+	height: 30px;
+	text-align:center;
+}
+
+
+</style>
+
+<body>
+	<input id="x" type="number" value="8">
+	<input id="y" type="number" value="8">
+	<input type="button" value="重置" onclick="createTable()">
+	<table id="table" >
+		
+	</table>
+</body>
+<script>
+
+var text =  "x";
+var xl;
+var yl;
+var red = new Array();
+
+function createTable(){
+	xl = parseInt(document.getElementById("x").value);
+	yl = parseInt(document.getElementById("y").value);
+
+	var table = document.getElementById("table");
+	while(table.hasChildNodes()) //当div下还存在子节点时 循环继续
+　　{
+　　　　table.removeChild(table.firstChild);
+　　}
+	for(var i = 0 ;i<xl;i++){
+		red[i]=new Array();
+		var tr = document.createElement("tr");
+		for(var j = 0 ;j<yl;j++){
+			red[i][j]=0;
+			var td = document.createElement("td");
+			td.setAttribute("x",i);
+			td.setAttribute("y",j);
+			td.addEventListener("click", function(){
+				if(this.innerHTML == ""){
+					this.innerHTML = text;
+					var _x = this.getAttribute("x");
+					var _y = this.getAttribute("y");
+					
+					if(text == "x"){
+						this.style = 'color:red'
+						text = "o"
+						red[_x][_y] = 1;
+						setTimeout(function (){
+							if(is5(_x,_y,1)){
+								alert("red win！！！")
+							}
+						}, 100);
+						
+					}else{
+						this.style = 'color:green'
+						text = "x"
+						red[_x][_y] = 2;
+						setTimeout(function (){
+							if(is5(_x,_y,2)){
+								alert("green win！！！")
+							}
+						}, 100);
+					}
+					console.log(red)
+					
+				}
+				
+			});
+			
+			
+			tr.appendChild(td)
+		}
+		table.appendChild(tr)
+	}
+	console.log(red)
+}
+
+function is5(x,y,type){
+	x = parseInt(x);
+	y = parseInt(y)
+	var length = 4;
+	
+	//向上
+	for(var i=1;i<5;i++){
+		var _x = x;
+		var _y = y - i;
+		if(_x < 0 || _x >= xl || _y < 0 || _y >= yl){
+			break;
+		}
+		if(red[_x][_y] == type){
+			length -= 1;
+		}else{
+			break;
+		}
+	}
+	//向下
+	for(var i=1;i<5;i++){
+		var _x = x;
+		var _y = y + i;
+		if(_x < 0 || _x >= xl || _y < 0 || _y >= yl){
+			break;
+		}
+		if(red[_x][_y] == type){
+			length -= 1;
+		}else{
+			break;
+		}
+	}
+	if(length == 0){
+		 return true;
+	}
+	
+	 length = 4;
+	
+	
+	//向左
+	for(var i=1;i<5;i++){
+		var _x = x - i;
+		var _y = y;
+		if(_x < 0 || _x >= xl || _y < 0 || _y >= yl){
+			break;
+		}
+		if(red[_x][_y] == type){
+			length -= 1;
+		}else{
+			break;
+		}
+	}
+	//向右
+	for(var i=1;i<5;i++){
+		var _x = x + i;
+		var _y = y;
+		if(_x < 0 || _x >= xl || _y < 0 || _y >= yl){
+			break;
+		}
+		if(red[_x][_y] == type){
+			length -= 1;
+		}else{
+			break;
+		}
+	}
+	if(length == 0){
+		 return true;
+	}
+	
+	
+	 length = 4;
+	
+	//向左上
+	for(var i=1;i<5;i++){
+		var _x = x - i;
+		var _y = y + i;
+		if(_x < 0 || _x >= xl || _y < 0 || _y >= yl){
+			break;
+		}
+		if(red[_x][_y] == type){
+			length -= 1;
+		}else{
+			break;
+		}
+	}
+	//向右下
+	for(var i=1;i<5;i++){
+		var _x = x + i;
+		var _y = y - i;
+		if(_x < 0 || _x >= xl || _y < 0 || _y >= yl){
+			break;
+		}
+		if(red[_x][_y] == type){
+			length -= 1;
+		}else{
+			break;
+		}
+	}
+	if(length == 0){
+		 return true;
+	}
+	
+	
+	 length = 4;
+	
+	//向右上
+	for(var i=1;i<5;i++){
+		var _x = x + i;
+		var _y = y + i;
+		if(_x < 0 || _x >= xl || _y < 0 || _y >= yl){
+			break;
+		}
+		if(red[_x][_y] == type){
+			length -= 1;
+		}else{
+			break;
+		}
+	}
+	//向左下
+	for(var i=1;i<5;i++){
+		var _x = x - i;
+		var _y = y - i;
+		if(_x < 0 || _x >= xl || _y < 0 || _y >= yl){
+			break;
+		}
+		if(red[_x][_y] == type){
+			length -= 1;
+		}else{
+			break;
+		}
+	}
+	
+	
+	if(length == 0){
+		 return true;
+	}
+	
+	return false;
+}
+
+	
+	
+	
+	
+</script>
+</html>
