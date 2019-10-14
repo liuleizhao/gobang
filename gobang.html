@@ -1,59 +1,56 @@
 <!DOCTYPE html>
-<head> 
-<meta http-equiv="content-Type"content="text/html;charset=UTF-8"> 
-<meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1,target-densitydpi=device-dpi ">
+<head>
+<meta http-equiv="content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1,target-densitydpi=device-dpi ">
 
 
-<meta charset=utf-8> 
+<meta charset=utf-8>
 <title>HTML5</title>
 
 <style>
-
 * {
--webkit-touch-callout:none;
--webkit-user-select:none;
--khtml-user-select:none;
--moz-user-select:none;
--ms-user-select:none;
-user-select:none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
-table,table tr th,table tr td{
-     border: 1px solid #ccc;
-  }
-table{
-	margin-top:10px;
-     border-collapse: collapse;
-  }
-  
-  td {
+
+table, table tr th, table tr td {
+	border: 1px solid #ccc;
+}
+
+table {
+	margin-top: 10px;
+	border-collapse: collapse;
+}
+
+td {
 	width: 30px;
 	height: 30px;
-	text-align:center;
-	  background-color:#fff;
+	text-align: center;
+	background-color: #fff;
 }
-
-
 </style>
 </head>
 <body>
 	<input id="x" type="number" value="8" min="3" max="12">
 	<input id="y" type="number" value="8" min="3" max="12">
 	<input type="button" value="重置" onclick="createTable()">
-	<table id="table" >
-		
+	<table id="table">
+
 	</table>
 </body>
 <script>
-
 var text =  "x";
 var xl;
 var yl;
 var red = new Array();
-
 function createTable(){
 	xl = parseInt(document.getElementById("x").value);
 	yl = parseInt(document.getElementById("y").value);
-
 	var table = document.getElementById("table");
 	while(table.hasChildNodes()) //当div下还存在子节点时 循环继续
 　　{
@@ -106,7 +103,6 @@ function createTable(){
 	}
 	console.log(red)
 }
-
 function is5(x,y,type){
 	x = parseInt(x);
 	y = parseInt(y)
@@ -245,10 +241,6 @@ function is5(x,y,type){
 	
 	return false;
 }
-
-	
-	
-	
 	
 </script>
 </html>
