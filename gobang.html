@@ -37,7 +37,6 @@ td {
 </style>
 </head>
 <body>
-	<input id="x" type="number" value="12">
 	<input type="button" value="重置" onclick="createTable()">
 	<table id="table">
 
@@ -48,17 +47,14 @@ window.onload=function(){
 	createTable();
 }
 var text =  "x";
-var xl;
-var yl;
+var xl = 15;
+var yl = 15;
 var red = new Array();
 function createTable(){
-	xl = parseInt(document.getElementById("x").value);
-	yl = xl;
 	var table = document.getElementById("table");
-	while(table.hasChildNodes()) //当div下还存在子节点时 循环继续
-　　{
-　　　　table.removeChild(table.firstChild);
-　　}
+	while(table.hasChildNodes()){
+　　　　	table.removeChild(table.firstChild);
+　　    }
 	for(var i = 0 ;i<xl;i++){
 		red[i]=new Array();
 		var tr = document.createElement("tr");
