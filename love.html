@@ -17,7 +17,12 @@
     margin: 0;
     background:rgba(255, 255, 255, 1);
   }
-
+  body:after {
+  color: red;
+  font: 7vmin segoe script, cursive;
+  /* filter: blur(1px); */
+  content: "liu leizhao :";
+}
   canvas {
     position: absolute;
     width: 100%;
@@ -219,6 +224,8 @@
         particleRate = settings.particles.length / settings.particles.duration, // particles/sec
         time;
 
+		
+
       // get point on heart with -PI <= t <= PI
       function pointOnHeart(t) {
         return new Point(
@@ -252,7 +259,7 @@
         }
         context.closePath();
         // create the fill
-        context.fillStyle = '#ea80b0';
+        context.fillStyle = '#ff0000';
         context.fill();
         // create the image
         var image = new Image();
@@ -266,16 +273,25 @@
         requestAnimationFrame(render);
 
         // update time
-        var newTime = new Date().getTime() / 1000,
-          deltaTime = newTime - (time || newTime);
+        var newTime = new Date().getTime() / 10000,
+        deltaTime = newTime - (time || newTime);
         time = newTime;
 
         // clear canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
+        
 
+        context.font = '7vmin segoe script, cursive';
+        context.fillStyle = "red";
+        context.textBaseline = "middle";
+        context.textAlign = "center";
+        // context.filter = "blur(1px)";
+        context.fillText("yujie", canvas.width/2, canvas.height/2-20);
+
+        // context.filter = "";
         // create new particles
         var amount = particleRate * deltaTime;
-        for (var i = 0; i < amount; i++) {
+        for (var i = 0; i < 5; i++) {
           var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
           var dir = pos.clone().length(settings.particles.velocity);
           particles.add(canvas.width / 2 + pos.x, canvas.height / 2 - pos.y, dir.x, -dir.y);
