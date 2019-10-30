@@ -60,7 +60,7 @@
      */
     (function () {
       if(getQueryVariable("name")){
-        name = getQueryVariable("name");
+       name = decodeURIComponent(getQueryVariable("name"));
       }
 
       var b = 0;
